@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>Learning D3</title>
+
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+    </head>
+
+    <style>
+
+</style>
+    <body>
+        <p>
+            My name is
+            <span class='name'></span>
+        </p>
+
+        <ul class="items">
+            <li>This is an item</li>
+            <li>This is an item</li>
+            <li>This is an item</li>
+            <li>This is an item</li>
+            <li>This is an item</li>
+        </ul>
+
+    </body>
+
+    <script>
+        var numArray = [12, 20, 33, 40, 55, 60, 75, 80, 90, 101, 110, 130];
+
+    var name = 'John Doe';
+
+    var li = d3.select('body').selectAll('.items li')
+        .data(numArray)
+        .text(function(d){
+            return 'This is item number '+d;
+        });
+
+    li.enter().append('li')
+        .text(function(d){
+            return 'This is item number '+d;
+        });
+
+    li.exit().remove();
+
+    // d3.selectAll('.items li')
+    // .data(numArray)
+    // .style('font-size', function(d){
+    //     return d+'px';
+    // });
+    </script>
+</html>
